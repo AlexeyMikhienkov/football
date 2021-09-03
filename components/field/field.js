@@ -1,7 +1,6 @@
 import React from "react";
 import PlayerInfo from "../player-info/playerInfo";
 import {players} from "../../constants/constants";
-import {question} from "../../constants/copyright";
 import Controls from "../controls/controls";
 
 export default function Field({className}) {
