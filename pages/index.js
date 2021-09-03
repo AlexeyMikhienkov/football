@@ -4,13 +4,9 @@ import {players} from "../constants/constants";
 import ControlButton from "../components/controls/control-button";
 import Field from "../components/field/field";
 import Game from "../components/game/game";
+import Controls from "../components/controls/controls";
 
 export default function Home() {
-  //return (
-  //  <PlayerInfo className={"field__player-info"} player={players[0]} modificator={"right-panel"} />
-  //)
-  //return <ControlButton title={"Выше"}/>
-
   return <Game className={"game"} />
 }
 
