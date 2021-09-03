@@ -1,0 +1,42 @@
+.controls {
+
+  &__button {
+    width: 180px;
+    height: 90px;
+    border: none;
+
+    background-color: #2d2c8b;
+
+    &:hover {
+      cursor: pointer;
+
+      background-color: #0b83a3;
+    }
+  }
+
+
+
+
+  &__button-symbol {
+    width: 37px;
+    height: 20px;
+
+  }
+
+  &__button-text {
+    font-family: GraphikLC, Helvetica, sans-serif;
+    font-size: 22px;
+    font-stretch: 100%;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 26px;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  &__button-symbol-svg {
+  //  background-color: #ffffff;
+
+  }
+
+}

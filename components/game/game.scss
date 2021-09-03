@@ -1,0 +1,17 @@
+.game {
+  width: 1600px;
+  height: 970px;
+
+  &__header {
+    width: 1600px;
+    height: 70px;
+    background: #2d2c8b;
+  }
+
+  &__field {
+    margin-bottom: 0;
+
+    width: 1600px;
+    height: 900px;
+  }
+}
