@@ -136,8 +136,9 @@ $aboutHeight: 60px;
     position: relative;
     width: min-content;
     height: min-content;
+    margin: 0;
 
-    bottom: 250px;
+    bottom: -50px;
     right: -500px;
 
     font-family: Druk Text Cy,Helvetica,sans-serif;
@@ -147,9 +148,3 @@ $aboutHeight: 60px;
     pointer-events: none;
   }
 }
-
-//<div className={className ? `${className}__price-container` : ""}>
-//<p className={className ? `${className}__euro` : ""}>{euro}</p>
-//<p className={className ? `${className}__player-price` : ""}>{price}</p>
-//<p className={className ? `${className}__mln` : ""}>{millions}</p>
-//</div>

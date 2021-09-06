@@ -35,3 +35,7 @@ export const players = [
         alt: "Флаг России"
     },
 ];
+
+export const rightAnswerColor = "#0dae37";
+export const wrongAnswerColor = "#bd0a0c";
+export const rightPanelColor = "#19c0f5";

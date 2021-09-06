@@ -5,6 +5,8 @@ import {infoFrom, question} from "../../constants/copyright";
 export default function PlayerInfo({className, player, isQuestion}) {
     const {name, about, price, src, alt} = player;
 
+    // console.log(player);
+
     return (
         <div className={`player-info ${className ?? ""} ${isQuestion ? `player-info_right-panel` : ""}`}>
             <p className={"player-info__name"}>{name}</p>
