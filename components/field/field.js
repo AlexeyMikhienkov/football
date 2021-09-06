@@ -6,8 +6,6 @@ import {getRandomInt} from "../../utils/getRandomInt";
 import {controls} from "../../constants/copyright";
 
 export default function Field({className}) {
-    console.log("_____________________________");
-    console.log("render");
     const [sequence, setSequence] = useState(generatePlayerSequence(players));
     const [offset, setOffset] = useState(0);
     const [leftPlayer, setLeftPlayer] = useState(sequence[offset]);
@@ -27,13 +25,13 @@ export default function Field({className}) {
     }
 
     useEffect(() => {
-        console.log(offset, answer);
-
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             setLeftPlayer(sequence[offset]);
             setRightPlayer(sequence[offset + 1]);
             setAnswer(null)
         }, 2000);
+
+        return () => clearTimeout(timeout);
     }, [offset]);
 
     const rightPanel =
@@ -67,25 +65,9 @@ export default function Field({className}) {
     )
 }
 
-
-/*
-                    return (
-                    <>
-                        <PlayerInfo className={"field__player-info"} player={rightPlayer} isQuestion={true} onChangeColor={() => changeColor(answer)} />
-                        <Controls className={"player-info__controls"}
-                        onAction={(title) => checkClick(leftPlayer, rightPlayer, onSetOffset, onSetAnswer, title)}/>
-                    </>
-                    )}
-                    else
-                    return null
- */
-
-
-// style={{{setTimeout(() => {
-//                 backgroundColor: setColor(answer)
-//             }, 3000)}}}
-
 function checkClick(leftPlayer, rightPlayer, onSetOffset, onSetAnswer, title) {
+    console.log("check");
+
     switch (title) {
         case controls.up:
             //      console.log("Выше");
