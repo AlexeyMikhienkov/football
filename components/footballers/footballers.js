@@ -4,6 +4,8 @@ import Game from "../game/game";
 
 export default function Footballers({className}) {
     const [page, setPage] = useState("intro");
+    const [result, setResult] = useState(false);
+    const [score, setScore] = useState(0);
 
     function onChangePage(page) {
         return setPage(page);
@@ -13,18 +15,24 @@ export default function Footballers({className}) {
 
     return (
         <div className={className ?? ""}>
-            {returnPage(page, onChangePage)}
+            {
+                page === "game" ?
+                    <Game className={"footballers__game"} score={score}
+                          onSetScore={() => setScore(score + 1)}
+                          onAction={() => {
+                              setResult(true);
+                              setPage("intro");
+                          }}
+                    /> :
+                    <Intro className={"footballers__intro"}
+                           onAction={() => result ? onChangePage("result") : onChangePage("game")}
+                           onResetGame={() => {
+                               setResult(false);
+                               setScore(0);
+                               onChangePage("intro")
+                           }}
+                           result={result} score={score}/>
+            }
         </div>
     )
-}
-
-function returnPage(page, onChangePage) {
-    switch (page) {
-        case "intro":
-            return <Intro className={"footballers__intro"} onAction={() => onChangePage("game")}/>;
-        case "game":
-            return <Game className={"footballers__game"}/>;
-        case "result":
-            return <div>result</div>;
-    }
 }

@@ -7,7 +7,6 @@ import {controls} from "../../constants/copyright";
 
 export default function Field({className, offset, onSetAttempts, onSetScore, onSetOffset}) {
     const [sequence, setSequence] = useState(generatePlayerSequence(players));
-   // const [offset, setOffset] = useState(0);
     const [leftPlayer, setLeftPlayer] = useState(sequence[offset]);
     const [rightPlayer, setRightPlayer] = useState(sequence[offset + 1]);
     const [answer, setAnswer] = useState(null);

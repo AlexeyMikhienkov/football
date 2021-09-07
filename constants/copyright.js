@@ -20,8 +20,7 @@ export const gameIntroSubtitle =
 
 export const startGame = "Начать";
 
-export const gameResultTitle = "Удачных сделок";
-export const gameHyphen = "-";
+export const gameResultTitle = "Удачных сделок -";
 export const gameResultSubtitle = "Вы в начале пути к успеху. Наша игра поможет вам лучше ориентироваться на " +
     "бирже футбольных талантов! Узнайте, как устроена стоимость самых разных активов и как на этом можно заработать. " +
     "Откройте брокерский счёт в «Открытие Брокер» и начните торговать на рынке ценных бумаг.\n";
