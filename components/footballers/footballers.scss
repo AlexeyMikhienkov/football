@@ -1,0 +1,13 @@
+.footballers {
+  width: 1600px;
+  height: 970px;
+
+  background-color: #00b5e6;
+
+  &__intro,
+  &__game {
+    width: inherit;
+    height: inherit;
+  }
+
+}

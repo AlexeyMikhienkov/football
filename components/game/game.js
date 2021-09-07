@@ -38,7 +38,7 @@ export default function Game({className}) {
     return (
         gameOver ?
             <div>ГАМОВЕР</div> :
-            <div className={className ?? ""}>
+            <div className={`game ${className ?? ""}`}>
                 <Statistics className={"game__statistics"} score={score} attempts={attempts} record={record}/>
                 <Field className={`game__field`} offset={offset} onSetScore={() => setScore(score + 1)}
                        onSetAttempts={() => setAttempts(attempts - 1)} onSetOffset={() => setOffset(offset + 1)}/>

@@ -1,0 +1,75 @@
+.intro {
+
+  &__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    left: 150px;
+    top: 85px;
+
+    width: 850px;
+    height: 800px;
+  }
+
+  &__title {
+    position: relative;
+    margin: 50px 0 0 10px;
+
+    font-family: "Druk Text Cy", Helvetica, sans-serif;
+    font-size: 115px;
+    letter-spacing: -1px;
+    line-height: 110px;
+    text-transform: uppercase;
+    color: #ffffff;
+
+  }
+
+  &__subtitle {
+    position: relative;
+    margin: 40px 0 0 10px;
+    width: 85%;
+
+    font-family: GraphikLC, Helvetica, sans-serif;
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 30px;
+    white-space: pre-wrap;
+    color: #ffffff;
+
+  }
+
+  &__button {
+    position: relative;
+    margin-top: 85px;
+    margin-left: 10px;
+
+    width: 380px;
+    height: 75px;
+
+    background-color: #2d2c8b;
+    border: none;
+    cursor: pointer;
+
+    color: #ffffff;
+    font-family: GraphikLC, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 18px;
+    text-align: center;
+
+    &:hover {
+      background-color: #0b83a3;
+    }
+
+  }
+
+  &__image {
+    position: absolute;
+    right: 170px;
+    bottom: 500px;
+
+    width: 600px;
+    height: 460px;
+  }
+}
