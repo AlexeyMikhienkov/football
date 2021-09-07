@@ -1,9 +1,9 @@
-import Intro from "../intro/intro";
+import Info from "../info/info";
 import React, {useState} from "react";
 import Game from "../game/game";
 
 export default function Footballers({className}) {
-    const [page, setPage] = useState("intro");
+    const [page, setPage] = useState("info");
     const [result, setResult] = useState(false);
     const [score, setScore] = useState(0);
 
@@ -21,17 +21,17 @@ export default function Footballers({className}) {
                           onSetScore={() => setScore(score + 1)}
                           onAction={() => {
                               setResult(true);
-                              setPage("intro");
+                              setPage("info");
                           }}
                     /> :
-                    <Intro className={"footballers__intro"}
-                           onAction={() => result ? onChangePage("result") : onChangePage("game")}
-                           onResetGame={() => {
+                    <Info className={"footballers__info"}
+                          onAction={() => result ? onChangePage("result") : onChangePage("game")}
+                          onResetGame={() => {
                                setResult(false);
                                setScore(0);
-                               onChangePage("intro")
+                               onChangePage("info")
                            }}
-                           result={result} score={score}/>
+                          result={result} score={score}/>
             }
         </div>
     )
