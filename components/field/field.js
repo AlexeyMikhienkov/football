@@ -5,7 +5,7 @@ import Controls from "../controls/controls";
 import {getRandomInt} from "../../utils/getRandomInt";
 import {controls} from "../../constants/copyright";
 
-export default function Field({className}) {
+export default function Field({className, onSetAttempts, onSetScore}) {
     const [sequence, setSequence] = useState(generatePlayerSequence(players));
     const [offset, setOffset] = useState(0);
     const [leftPlayer, setLeftPlayer] = useState(sequence[offset]);
@@ -41,14 +41,14 @@ export default function Field({className}) {
                     <>
                         <PlayerInfo className={"field__player-info"} player={rightPlayer} isQuestion={true}/>
                         <Controls className={"player-info__controls"}
-                                  onAction={(title) => checkClick(leftPlayer, rightPlayer, onSetOffset, onSetAnswer, title)}/>
+                                  onAction={(title) => checkClick(leftPlayer, rightPlayer, onSetOffset, onSetAnswer, onSetAttempts, onSetScore, title)}/>
                     </>
                 </div>
             ) : answer ?
-                    <div className={"field__container field__container_right"} style={{backgroundColor: rightAnswerColor}}>
-                        <PlayerInfo className={"field__player-info"} player={rightPlayer} isQuestion={false}/>
-                    </div>
-                 :
+                <div className={"field__container field__container_right"} style={{backgroundColor: rightAnswerColor}}>
+                    <PlayerInfo className={"field__player-info"} player={rightPlayer} isQuestion={false}/>
+                </div>
+                :
                 <div className={"field__container field__container_right"} style={{backgroundColor: wrongAnswerColor}}>
                     <PlayerInfo className={"field__player-info"} player={rightPlayer} isQuestion={false}/>
                 </div>
@@ -65,34 +65,35 @@ export default function Field({className}) {
     )
 }
 
-function checkClick(leftPlayer, rightPlayer, onSetOffset, onSetAnswer, title) {
+function checkClick(leftPlayer, rightPlayer, onSetOffset, onSetAnswer, onSetAttempts, onSetScore, title) {
     console.log("check");
+    let answer = false;
 
     switch (title) {
         case controls.up:
             //      console.log("Выше");
-            rightPlayer.price > leftPlayer.price ? onSetAnswer(true) : onSetAnswer(false);
+            rightPlayer.price > leftPlayer.price ? answer = true : answer = false;
             break;
         case controls.down:
             //     console.log("Ниже");
-            rightPlayer.price < leftPlayer.price ? onSetAnswer(true) : onSetAnswer(false);
+            rightPlayer.price < leftPlayer.price ? answer = true : answer = false;
             break;
         case controls.equal:
             //    console.log("Равна");
-            rightPlayer.price === leftPlayer.price ? onSetAnswer(true) : onSetAnswer(false);
+            rightPlayer.price === leftPlayer.price ? answer = true : answer = false;
             break;
+    }
+
+    if (answer) {
+        onSetAnswer(true);
+        onSetScore();
+    } else {
+        onSetAnswer(false);
+        onSetAttempts();
     }
 
     onSetOffset();
 }
-
-// если ответ верный:
-// 1. зеленый фон справа
-// 2. отступ + 1
-
-// если ответ неверный:
-// 1. красный фон справа
-// 2. отступ + 1
 
 function generatePlayerSequence(players) {
     //  console.log("generate");

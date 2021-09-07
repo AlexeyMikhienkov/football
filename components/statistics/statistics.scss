@@ -1,0 +1,39 @@
+.statistics {
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+    margin: 0 auto;
+
+    width: 1400px;
+    height: 70px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+
+    width: 150px;
+    height: 100%;
+  }
+
+  &__item-title {
+    font-family: GraphikLC, Helvetica, sans-serif;
+    font-size: 25px;
+    line-height: 28px;
+    vertical-align: middle;
+    color: #ffffff;
+  }
+
+  &__item-value {
+    margin-left: 10px;
+
+    font-family: GraphikLC, Helvetica, sans-serif;
+    font-size: 25px;
+    line-height: 28px;
+    vertical-align: middle;
+    color: #ffffff;
+  }
+}

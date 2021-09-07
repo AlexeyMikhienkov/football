@@ -34,8 +34,44 @@ export const players = [
         src: "/images/Россия.png",
         alt: "Флаг России"
     },
+    {
+        name: "Тимо\nВернер",
+        about: "Германия, 2021",
+        price: 65,
+        src: "/images/Германия.png",
+        alt: "Флаг Германии"
+    },
+    {
+        name: "Ромелу\nЛукаку",
+        about: "Бельгия, 2021",
+        price: 90,
+        src: "/images/Бельгия.png",
+        alt: "Флаг Бельгии"
+    },
+    {
+        name: "Андрес\nИньеста",
+        about: "Испания, 2012",
+        price: 70,
+        src: "/images/Испания.png",
+        alt: "Флаг Испании"
+    },
 ];
 
 export const rightAnswerColor = "#0dae37";
 export const wrongAnswerColor = "#bd0a0c";
 export const rightPanelColor = "#19c0f5";
+
+export const statisticTitles = [
+    {
+        title: "record",
+        value: "Рекорд:"
+    },
+    {
+        title: "score",
+        value: "Счет:"
+    },
+    {
+        title: "attempts",
+        value: "Попытки:"
+    },
+];
