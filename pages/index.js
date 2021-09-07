@@ -5,6 +5,6 @@ export default function Home() {
   return <Footballers className={"footballers"} />
 }
 
-//TODO: менять цвет на белый при ответе в правой панели
+//TODO: добавить возможность сыграть снова
 // починить рандом
 // поправить размер числа на странице с результатом

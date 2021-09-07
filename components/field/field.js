@@ -16,8 +16,8 @@ export default function Field({className, offset, onSetAttempts, onSetScore, onS
     //  console.log(rightPlayer);
 
 //    function onSetOffset() {
- //       setOffset(offset + 1);
-  //  }
+    //       setOffset(offset + 1);
+    //  }
 
     function onSetAnswer(value) {
         setAnswer(value);
@@ -28,7 +28,7 @@ export default function Field({className, offset, onSetAttempts, onSetScore, onS
             setLeftPlayer(sequence[offset]);
             setRightPlayer(sequence[offset + 1]);
             setAnswer(null);
-        }, 2000);
+        }, 1500);
 
         return () => clearTimeout(timeout);
     }, [offset]);
@@ -45,11 +45,11 @@ export default function Field({className, offset, onSetAttempts, onSetScore, onS
                 </div>
             ) : answer ?
                 <div className={"field__container field__container_right"} style={{backgroundColor: rightAnswerColor}}>
-                    <PlayerInfo className={"field__player-info"} player={rightPlayer} isQuestion={false}/>
+                    <PlayerInfo className={"field__player-info"} player={rightPlayer} isQuestion={false} afterClick={true}/>
                 </div>
                 :
                 <div className={"field__container field__container_right"} style={{backgroundColor: wrongAnswerColor}}>
-                    <PlayerInfo className={"field__player-info"} player={rightPlayer} isQuestion={false}/>
+                    <PlayerInfo className={"field__player-info"} player={rightPlayer} isQuestion={false} afterClick={true}/>
                 </div>
             }
         </>;
