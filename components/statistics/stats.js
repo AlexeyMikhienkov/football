@@ -1,11 +1,11 @@
 import {statisticTitles} from "../../constants/constants";
 import React from "react";
 
-export default function Stats({className, score, attempts}) {
+export default function Stats({className, score, attempts, record}) {
     const elems = statisticTitles.map((item, index) => {
         return (
             <div key={index} className={"statistics__item"}>
-                {addTitle(item, score, attempts)}
+                {addTitle(item, score, attempts, record)}
             </div>
         )
     });
@@ -17,13 +17,13 @@ export default function Stats({className, score, attempts}) {
     )
 }
 
-function addTitle(item, score, attempts) {
+function addTitle(item, score, attempts, record) {
     switch (item.title) {
         case "record":
             return (
                 <>
                     <p className={"statistics__item-title"}>{item.value}</p>
-                    <p className={"statistics__item-value"}>{0}</p>
+                    <p className={"statistics__item-value"}>{record}</p>
                 </>
             );
         case "score":

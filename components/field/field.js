@@ -5,9 +5,9 @@ import Controls from "../controls/controls";
 import {getRandomInt} from "../../utils/getRandomInt";
 import {controls} from "../../constants/copyright";
 
-export default function Field({className, onSetAttempts, onSetScore}) {
+export default function Field({className, offset, onSetAttempts, onSetScore, onSetOffset}) {
     const [sequence, setSequence] = useState(generatePlayerSequence(players));
-    const [offset, setOffset] = useState(0);
+   // const [offset, setOffset] = useState(0);
     const [leftPlayer, setLeftPlayer] = useState(sequence[offset]);
     const [rightPlayer, setRightPlayer] = useState(sequence[offset + 1]);
     const [answer, setAnswer] = useState(null);
@@ -16,9 +16,9 @@ export default function Field({className, onSetAttempts, onSetScore}) {
     //  console.log(leftPlayer);
     //  console.log(rightPlayer);
 
-    function onSetOffset() {
-        setOffset(offset + 1);
-    }
+//    function onSetOffset() {
+ //       setOffset(offset + 1);
+  //  }
 
     function onSetAnswer(value) {
         setAnswer(value);
@@ -28,7 +28,7 @@ export default function Field({className, onSetAttempts, onSetScore}) {
         const timeout = setTimeout(() => {
             setLeftPlayer(sequence[offset]);
             setRightPlayer(sequence[offset + 1]);
-            setAnswer(null)
+            setAnswer(null);
         }, 2000);
 
         return () => clearTimeout(timeout);
