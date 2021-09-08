@@ -2,7 +2,7 @@ import {controls, controlsTitle} from "../../constants/copyright";
 import React from "react";
 import ControlButton from "./control-button";
 
-export default function Controls({className, onAction}) { //className = player-info__controls
+export default function Controls({className, onAction}) {
     return (
         <div className={`controls ${className ?? ""}`}>
             <p className={"controls__title"}>{controlsTitle}</p>

@@ -7,6 +7,7 @@ export default function Game({className, onAction, score, onSetScore}) {
     const [attempts, setAttempts] = useState(5);
     const [record, setRecord] = useState(0);
     const [offset, setOffset] = useState(0);
+    const [answer, setAnswer] = useState(null);
 
     useEffect(() => {
         setRecord(Number(global.window.localStorage.getItem("record")));
@@ -27,14 +28,14 @@ export default function Game({className, onAction, score, onSetScore}) {
 
     useEffect(() => {
         if (attempts < 0) {
-            setTimeout(() => onAction(), 900);
+            onAction();
         }
     }, [attempts]);
 
     return (
         <div className={`game ${className ?? ""}`}>
             <Statistics className={"game__statistics"} score={score} attempts={attempts} record={record}/>
-            <Field className={`game__field`} offset={offset} onSetScore={onSetScore}
+            <Field className={`game__field`} offset={offset} onSetScore={onSetScore} answer={answer} onSetAnswer={setAnswer}
                    onSetAttempts={() => setAttempts(attempts - 1)} onSetOffset={() => setOffset(offset + 1)}/>
         </div>
     )
