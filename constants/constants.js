@@ -55,6 +55,13 @@ export const players = [
         src: "/images/Испания.png",
         alt: "Флаг Испании"
     },
+    {
+        name: "Фил\nФоден",
+        about: "Англия, 2021",
+        price: 75,
+        src: "/images/Англия.png",
+        alt: "Флаг Англии"
+    },
 ];
 
 export const rightAnswerColor = "#0dae37";
@@ -75,3 +82,5 @@ export const statisticTitles = [
         value: "Попытки:"
     },
 ];
+
+export const animationDuration = 10000;

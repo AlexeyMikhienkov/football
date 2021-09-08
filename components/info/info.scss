@@ -25,6 +25,7 @@
     &_result {
       font-size: 80px;
       color: #ffffff;
+      line-height: 90px;
     }
   }
 
@@ -68,8 +69,8 @@
   }
 
   &__image {
-    position: absolute;
-    right: 170px;
+    position: relative;
+    left: 900px;
     bottom: 500px;
 
     width: 600px;
@@ -83,6 +84,8 @@
   }
 
   &__score {
+    margin-left: 10px;
+
     font-family: "Druk Text Cy", Helvetica, sans-serif;
     font-size: 80px;
     letter-spacing: -1px;

@@ -1,58 +1,103 @@
 import React, {useState, useEffect} from "react";
 import PlayerInfo from "../player-info/playerInfo";
-import {players, rightAnswerColor, wrongAnswerColor} from "../../constants/constants";
+import {animationDuration, players, rightAnswerColor, wrongAnswerColor} from "../../constants/constants";
 import Controls from "../controls/controls";
 import {getRandomInt} from "../../utils/getRandomInt";
 import {controls} from "../../constants/copyright";
+import {CSSTransition} from "react-transition-group";
 
 export default function Field({className, offset, onSetAttempts, onSetScore, onSetOffset}) {
     const [sequence, setSequence] = useState(generatePlayerSequence(players));
     const [leftPlayer, setLeftPlayer] = useState(sequence[offset]);
     const [rightPlayer, setRightPlayer] = useState(sequence[offset + 1]);
     const [answer, setAnswer] = useState(null);
+    const [inPropLeft, setInPropLeft] = useState(true);
+    const [inPropRight, setInPropRight] = useState(false);
 
     //  console.log(sequence);
     //  console.log(leftPlayer);
     //  console.log(rightPlayer);
 
-//    function onSetOffset() {
-    //       setOffset(offset + 1);
-    //  }
+    useEffect(() => {
+        console.log(offset);
+        console.log(players.length);
+
+        const timeout = setTimeout(() => {
+            setLeftPlayer(sequence[offset]);
+            setRightPlayer(sequence[offset + 1]);
+            setAnswer(null);
+        }, 1000);
+
+        if (offset !== 0) {
+            setInPropLeft(false);
+            setInPropRight(true);
+        }
+
+        return () => clearTimeout(timeout);
+    }, [offset]);
+
 
     function onSetAnswer(value) {
         setAnswer(value);
     }
 
-    useEffect(() => {
-        const timeout = setTimeout(() => {
-            setLeftPlayer(sequence[offset]);
-            setRightPlayer(sequence[offset + 1]);
-            setAnswer(null);
-        }, 1500);
+    /*
+    const rightPanel =
+        <>
+            {answer === null ? (
+                    <div className={"field__container field__container_right"}>
+                        <>
+                            <CSSTransition in={inPropRight} timeout={animationDuration} classNames="player-info_right-panel">
+                                <PlayerInfo className={"field__player-info"} player={rightPlayer} isQuestion={true}/>
+                            </CSSTransition>
+                            <Controls className={"player-info__controls"}
+                                      onAction={(title) => checkClick(leftPlayer, rightPlayer, onSetOffset, onSetAnswer, onSetAttempts, onSetScore, title)}/>
+                        </>
+                    </div>
+                ) :
+                <div className={"field__container field__container_right"}
+                     style={{backgroundColor: `${answer ? rightAnswerColor : wrongAnswerColor}`}}>
+                    <CSSTransition in={inPropRight} timeout={animationDuration} classNames="player-info_right-panel">
+                        <PlayerInfo className={"field__player-info"} player={rightPlayer} isQuestion={false}
+                                    afterClick={true}/>
+                    </CSSTransition>
+                </div>
+            }
+        </>;
 
-        return () => clearTimeout(timeout);
-    }, [offset]);
+    return (
+        <div className={`field ${className ?? ""}`}>
+            <div className={"field__container"}>
+                <CSSTransition in={inPropLeft} timeout={animationDuration} classNames="player-info">
+                    <PlayerInfo className={"field__player-info"} player={leftPlayer} isQuestion={false}/>
+                </CSSTransition>
+            </div>
+            {rightPanel}
+        </div>
+    )
+
+     */
+
 
     const rightPanel =
         <>
             {answer === null ? (
-                <div className={"field__container field__container_right"}>
-                    <>
-                        <PlayerInfo className={"field__player-info"} player={rightPlayer} isQuestion={true}/>
-                        <Controls className={"player-info__controls"}
-                                  onAction={(title) => checkClick(leftPlayer, rightPlayer, onSetOffset, onSetAnswer, onSetAttempts, onSetScore, title)}/>
-                    </>
-                </div>
-            ) : answer ?
-                <div className={"field__container field__container_right"} style={{backgroundColor: rightAnswerColor}}>
-                    <PlayerInfo className={"field__player-info"} player={rightPlayer} isQuestion={false} afterClick={true}/>
-                </div>
-                :
-                <div className={"field__container field__container_right"} style={{backgroundColor: wrongAnswerColor}}>
-                    <PlayerInfo className={"field__player-info"} player={rightPlayer} isQuestion={false} afterClick={true}/>
+                    <div className={"field__container field__container_right"}>
+                        <>
+                            <PlayerInfo className={"field__player-info"} player={rightPlayer} isQuestion={true}/>
+                            <Controls className={"player-info__controls"}
+                                      onAction={(title) => checkClick(leftPlayer, rightPlayer, onSetOffset, onSetAnswer, onSetAttempts, onSetScore, title)}/>
+                        </>
+                    </div>
+                ) :
+                <div className={"field__container field__container_right"}
+                     style={{backgroundColor: `${answer ? rightAnswerColor : wrongAnswerColor}`}}>
+                    <PlayerInfo className={"field__player-info"} player={rightPlayer} isQuestion={false}
+                                afterClick={true}/>
                 </div>
             }
         </>;
+
 
     return (
         <div className={`field ${className ?? ""}`}>
@@ -62,6 +107,8 @@ export default function Field({className, offset, onSetAttempts, onSetScore, onS
             {rightPanel}
         </div>
     )
+
+
 }
 
 function checkClick(leftPlayer, rightPlayer, onSetOffset, onSetAnswer, onSetAttempts, onSetScore, title) {
@@ -70,15 +117,12 @@ function checkClick(leftPlayer, rightPlayer, onSetOffset, onSetAnswer, onSetAtte
 
     switch (title) {
         case controls.up:
-            //      console.log("Выше");
             rightPlayer.price > leftPlayer.price ? answer = true : answer = false;
             break;
         case controls.down:
-            //     console.log("Ниже");
             rightPlayer.price < leftPlayer.price ? answer = true : answer = false;
             break;
         case controls.equal:
-            //    console.log("Равна");
             rightPlayer.price === leftPlayer.price ? answer = true : answer = false;
             break;
     }

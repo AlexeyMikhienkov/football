@@ -1,12 +1,12 @@
 import Field from "../field/field";
 import React, {useState, useEffect} from "react";
 import Statistics from "../statistics/statistics";
+import {players} from "../../constants/constants";
 
 export default function Game({className, onAction, score, onSetScore}) {
-    const [attempts, setAttempts] = useState(2);
+    const [attempts, setAttempts] = useState(5);
     const [record, setRecord] = useState(0);
     const [offset, setOffset] = useState(0);
-  //  const [score, setScore] = useState(0);
 
     useEffect(() => {
         setRecord(Number(global.window.localStorage.getItem("record")));
@@ -14,6 +14,10 @@ export default function Game({className, onAction, score, onSetScore}) {
 
     useEffect(() => {
         const item = Number(global.window.localStorage.getItem("record"));
+
+        if (offset + 1 === players.length) {
+            setTimeout(() => onAction(), 900);
+        }
 
         if (item < score) {
             global.window.localStorage.setItem("record", String(item + 1));
@@ -23,7 +27,7 @@ export default function Game({className, onAction, score, onSetScore}) {
 
     useEffect(() => {
         if (attempts < 0) {
-            onAction();
+            setTimeout(() => onAction(), 900);
         }
     }, [attempts]);
 
@@ -35,7 +39,3 @@ export default function Game({className, onAction, score, onSetScore}) {
         </div>
     )
 }
-
-// рекорд - общий счет (хранится в local storage)
-// счет - счет текущей игры (обнуляется при проигрыше)
-// попытки - число попыток (когда 0 и неверный ответ - переход на экран с окончанием игры)

@@ -6,12 +6,68 @@ $aboutHeight: 60px;
   display: flex;
   flex-direction: column;
   white-space: normal;
+/*
+  &-enter {
+    transform: translateX(100%);
+  }
 
- // background-color: #ffffff;
+  &-enter-active {
+    transform: translateX(0%);
+    transition: transform 10000ms;
+  }
+
+  &-enter-done {
+    transform: translateX(0%);
+  }
+
+ */
+
+  &-exit {
+    transform: translateX(0%);
+  }
+
+  &-exit-active {
+    transform: translateX(-100%);
+    transition: transform 10000ms;
+  }
+
+  &-exit-done {
+    transform: translateX(-100%);
+  }
+
+  // background-color: #ffffff;
 
   &_right-panel {
     background-color: #19c0f5;
 
+    &-enter {
+      transform: translateX(0%);
+    }
+
+    &-enter-active {
+      transform: translateX(-100%);
+      transition: transform 10000ms;
+    }
+
+    &-enter-done {
+      transform: translateX(-100%);
+    }
+/*
+    &-exit {
+      transform: translateX(0%);
+    }
+
+    &-exit-active {
+      transform: translateX(-100%);
+      transition: transform 10000ms;
+    }
+
+    &-exit-done {
+      transform: translateX(-100%);
+    }
+
+
+ */
     .player-info__name {
       color: #ffffff;
     }
@@ -141,9 +197,9 @@ $aboutHeight: 60px;
     bottom: -50px;
     right: -500px;
 
-    font-family: Druk Text Cy,Helvetica,sans-serif;
+    font-family: Druk Text Cy, Helvetica, sans-serif;
     font-size: 300px;
-    color: rgba(243,246,247,0.63473);
+    color: rgba(243, 246, 247, 0.63473);
     text-shadow: 0 0 12px hsl(0deg 0% 100% / 9%);
     pointer-events: none;
   }

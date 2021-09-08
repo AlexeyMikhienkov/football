@@ -11,8 +11,6 @@ export default function Footballers({className}) {
         return setPage(page);
     }
 
-    console.log(page);
-
     return (
         <div className={className ?? ""}>
             {
