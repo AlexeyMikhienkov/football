@@ -3,7 +3,7 @@ import React, {useState, useEffect} from "react";
 import Statistics from "../statistics/statistics";
 import {players} from "../../constants/constants";
 
-export default function Game({className, onAction, score, onSetScore}) {
+export default function Game({className, onAction, shuffled, score, onSetScore}) {
     const [attempts, setAttempts] = useState(5);
     const [record, setRecord] = useState(0);
     const [offset, setOffset] = useState(0);
@@ -35,7 +35,7 @@ export default function Game({className, onAction, score, onSetScore}) {
     return (
         <div className={`game ${className ?? ""}`}>
             <Statistics className={"game__statistics"} score={score} attempts={attempts} record={record}/>
-            <Field className={`game__field`} offset={offset} onSetScore={onSetScore} answer={answer} onSetAnswer={setAnswer}
+            <Field className={`game__field`} shuffled={shuffled} offset={offset} onSetScore={onSetScore} answer={answer} onSetAnswer={setAnswer}
                    onSetAttempts={() => setAttempts(attempts - 1)} onSetOffset={() => setOffset(offset + 1)}/>
         </div>
     )

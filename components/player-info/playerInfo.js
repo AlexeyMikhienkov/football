@@ -12,7 +12,7 @@ export default function PlayerInfo({className, player, isQuestion, afterClick, a
             <p className={"player-info__name"} style={{color: `${afterClick ? "#ffffff" : null}`}}>{name}</p>
             <div className={"player-info__about-container"}>
                 <img className={"player-info__image"} alt={alt} src={src} width={45} height={45}/>
-                <p className={"player-info__about"}>{about}</p>
+                <p className={"player-info__about"} style={{color: `${afterClick ? "#ffffff" : "#000000"}`}}>{about}</p>
             </div>
             {renderIfRight(isQuestion, price, afterClick)}
         </div>

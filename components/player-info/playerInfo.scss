@@ -8,8 +8,53 @@ $aboutHeight: 60px;
   white-space: normal;
 
   background-color: #ffffff;
+/*
+  &-enter {
+    transform: translateX(100%);
+  }
+
+  &-enter-active {
+    transform: translateX(0%);
+    transition: transform 10000ms;
+  }
+
+  &-enter-done {
+    transform: translateX(0%);
+  }
+
+
+
+  &-exit {
+    transform: translateX(0%);
+  }
+
+  &-exit-active {
+    transform: translateX(-100%);
+    transition: transform 10000ms;
+  }
+
+  &-exit-done {
+    transform: translateX(-100%);
+  }
+
+ */
 
   &_right-panel {
+/*
+    &-enter {
+      transform: translateX(100%);
+    }
+
+    &-enter-active {
+      transform: translateX(0%);
+      transition: transform 10000ms;
+    }
+
+    &-enter-done {
+      transform: translateX(0%);
+    }
+
+ */
 
     .player-info__name {
       color: #ffffff;

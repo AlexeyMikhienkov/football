@@ -6,6 +6,7 @@ import {
     gameResultTitle, resetGame,
     startGame
 } from "../../constants/copyright";
+import {CSSTransition} from "react-transition-group";
 
 export default function InfoContent({className, onAction, result, score, onResetGame}) {
     return (
